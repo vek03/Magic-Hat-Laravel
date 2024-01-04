@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+    private $user;
+
+    function __construct() {
+        $this->user = new User();
+    }
+
+
     /**
      * Display the user's profile form.
      */
@@ -20,6 +28,8 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
+
+
 
     /**
      * Update the user's profile information.
@@ -37,6 +47,8 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+
+    
     /**
      * Delete the user's account.
      */

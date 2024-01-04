@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Produto extends Model
 {
@@ -16,7 +18,7 @@ class Produto extends Model
      */
     protected $fillable = [
         'name',
-        'category',
+        'id_category',
         'type1',
         'type2',
         'age_range',
@@ -47,4 +49,41 @@ class Produto extends Model
     protected $casts = [
 
     ];
+
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class, 'id_category');
+    }
+
+
+    public function type1(): BelongsTo
+    {
+        return $this->belongsTo(Tipo::class, 'id_type1');
+    }
+
+    public function type2(): BelongsTo
+    {
+        return $this->belongsTo(Tipo::class, 'id_type2');
+    }
+
+
+    public function item(): HasMany
+    {
+        return $this->hasMany(Item_Compra::class, 'id_product');
+    }
+
+
+    public function cart(): HasMany
+    {
+        return $this->hasMany(Carrinho::class, 'id_product');
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Compra extends Model
 {
@@ -15,7 +17,7 @@ class Compra extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_cliente',
+        'id_client',
     ];
 
     /**
@@ -35,4 +37,24 @@ class Compra extends Model
     protected $casts = [
 
     ];
+
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_client');
+    }
+
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item_Compra::class, 'id_shopping');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Carrinho extends Model
 {
@@ -15,8 +16,8 @@ class Carrinho extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_cliente',
-        'id_produto',
+        'id_client',
+        'id_product',
         'qtdd',
     ];
 
@@ -37,4 +38,23 @@ class Carrinho extends Model
     protected $casts = [
 
     ];
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_client');
+    }
+
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Produto::class, 'id_product');
+    }
 }

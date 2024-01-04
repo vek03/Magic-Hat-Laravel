@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_category',
         'name',
         'lastname',
         'email',
@@ -28,7 +30,6 @@ class User extends Authenticatable
         'city',
         'district',
         'state',
-        'prefer',
     ];
 
     /**
@@ -50,4 +51,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class, 'id_category');
+    }
+
+
+    public function shopping(): HasMany
+    {
+        return $this->hasMany(Compra::class, 'id_client');
+    }
+
+
+    public function cart(): HasMany
+    {
+        return $this->hasMany(Carrinho::class, 'id_client');
+    }
 }

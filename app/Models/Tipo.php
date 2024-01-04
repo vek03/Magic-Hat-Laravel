@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tipo extends Model
 {
@@ -35,4 +36,24 @@ class Tipo extends Model
     protected $casts = [
 
     ];
+
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function product1(): HasMany
+    {
+        return $this->hasMany(Produto::class, 'id_type1');
+    }
+
+
+    public function product2(): HasMany
+    {
+        return $this->hasMany(Produto::class, 'id_type2');
+    }
 }

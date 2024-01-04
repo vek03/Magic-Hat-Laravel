@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Item_Compra extends Model
 {
@@ -15,8 +17,8 @@ class Item_Compra extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_compra',
-        'id_produto',
+        'id_shopping',
+        'id_product',
         'qtdd',
     ];
 
@@ -37,4 +39,23 @@ class Item_Compra extends Model
     protected $casts = [
 
     ];
+
+
+
+
+    /**
+     * Relationships
+     *
+     * 
+     */
+    public function shopping(): BelongsTo
+    {
+        return $this->belongsTo(Compra::class, 'id_shopping');
+    }
+
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Produto::class, 'id_product');
+    }
 }

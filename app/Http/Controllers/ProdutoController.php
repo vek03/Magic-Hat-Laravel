@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+    private $produto;
+
+    function __construct() {
+        $this->produto = new Produto();
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -14,6 +21,8 @@ class ProdutoController extends Controller
     {
         //
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,6 +32,8 @@ class ProdutoController extends Controller
         //
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -30,6 +41,8 @@ class ProdutoController extends Controller
     {
         //
     }
+
+
 
     /**
      * Display the specified resource.
@@ -39,6 +52,22 @@ class ProdutoController extends Controller
         //
     }
 
+
+
+    /**
+     * Display the all resources.
+     */
+    public function list()
+    {
+        $produtos = $this->produto->all();
+
+        return view('catalogo', [
+            'produtos' => $produtos,
+        ]);
+    }
+
+
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -47,6 +76,8 @@ class ProdutoController extends Controller
         //
     }
 
+
+
     /**
      * Update the specified resource in storage.
      */
@@ -54,6 +85,8 @@ class ProdutoController extends Controller
     {
         //
     }
+
+
 
     /**
      * Remove the specified resource from storage.

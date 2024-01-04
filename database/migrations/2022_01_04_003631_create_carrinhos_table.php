@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('carrinhos', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger('id_cliente')->nullable();
-            $table->foreign('id_cliente')->references('id')->on('users');
+            $table->unsignedBigInteger('id_client');
+            $table->foreign('id_client')->references('id')->on('users');
 
-            $table->unsignedBigInteger('id_produto')->nullable();
-            $table->foreign('id_produto')->references('id')->on('produtos');
+            $table->unsignedBigInteger('id_product');
+            $table->foreign('id_product')->references('id')->on('produtos');
         });
     }
 

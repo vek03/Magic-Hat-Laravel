@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('id_categoria')->nullable();
-            $table->foreign('id_categoria')->references('id')->on('categorias');
+            $table->unsignedBigInteger('id_category');
+            $table->foreign('id_category')->references('id')->on('categorias');
 
-            $table->unsignedBigInteger('id_tipo1')->nullable();
-            $table->foreign('id_tipo1')->references('id')->on('tipos');
+            $table->unsignedBigInteger('id_type1');
+            $table->foreign('id_type1')->references('id')->on('tipos');
 
-            $table->unsignedBigInteger('id_tipo2')->nullable();
-            $table->foreign('id_tipo2')->references('id')->on('tipos');
+            $table->unsignedBigInteger('id_type2');
+            $table->foreign('id_type2')->references('id')->on('tipos');
 
             $table->string('name');
             $table->enum('age_range',   ['Bebê', 'Criança','Pré-adolescente','Adolescente', 'Adulto']);
-            $table->integer('qtdd');
+            $table->unsignedInteger('qtdd');
             $table->double('price');
             $table->string('maker');
             $table->string('material');

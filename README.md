@@ -1,5 +1,12 @@
 PARA CONTINUAR DESENVOLVENDO:
 
+- 7zip
+- Composer
+- XAMPP
+- PHP 8.2.4
+- Node.js
+- NPM
+
 - Instale o projeto
 - Ligue o Painel de Controle do XAMPP e ative o Apache e o MySQL
 - Coloque a pasta do projeto dentro da pasta htdocs do XAMPP
@@ -8,7 +15,7 @@ PARA CONTINUAR DESENVOLVENDO:
 - cd '<pasta_do_projeto>'
 - composer install
 - npm install
-- Clone o arquivo ".env.example" e renomeie a cópia para ".env" com os dados do seu banco e das suas APIs
+- NÃO É NECESSÁRIO CLONAR O .ENV
 - php artisan migrate:fresh --seed ou php artisan migrate --seed(caso não tenha a base na maquina ainda)
 - npm run dev
 - php artisan serve
@@ -16,7 +23,7 @@ PARA CONTINUAR DESENVOLVENDO:
 - Pronto
 
 CASO DE ERRO NA HORA DE EXECUTAR O MIGRATE:
-- Apague a base de dados 'ladysteel_bd' do seu localhost
+- Apague a base de dados do seu localhost
 - php artisan migrate --seed
 
 CASO DE ERRO COM A BASE

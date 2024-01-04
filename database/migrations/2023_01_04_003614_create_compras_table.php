@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('id_cliente')->nullable();
-            $table->foreign('id_cliente')->references('id')->on('users');
+            $table->unsignedBigInteger('id_client');
+            $table->foreign('id_client')->references('id')->on('users');
 
             $table->timestamps();
         });

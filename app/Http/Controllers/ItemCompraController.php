@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ItemCompraController extends Controller
 {
+    private $item;
+
+    function __construct() {
+        $this->item = new Item_Compra();
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -14,6 +21,8 @@ class ItemCompraController extends Controller
     {
         //
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,6 +32,8 @@ class ItemCompraController extends Controller
         //
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -30,6 +41,8 @@ class ItemCompraController extends Controller
     {
         //
     }
+
+
 
     /**
      * Display the specified resource.
@@ -39,6 +52,8 @@ class ItemCompraController extends Controller
         //
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -46,6 +61,8 @@ class ItemCompraController extends Controller
     {
         //
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -55,6 +72,8 @@ class ItemCompraController extends Controller
         //
     }
 
+
+    
     /**
      * Remove the specified resource from storage.
      */

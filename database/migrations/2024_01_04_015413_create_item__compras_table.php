@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('item__compra', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_compra')->nullable();
-            $table->foreign('id_compra')->references('id')->on('compras');
+            $table->unsignedBigInteger('id_shopping');
+            $table->foreign('id_shopping')->references('id')->on('compras');
 
-            $table->unsignedBigInteger('id_produto')->nullable();
-            $table->foreign('id_produto')->references('id')->on('produtos');
+            $table->unsignedBigInteger('id_product');
+            $table->foreign('id_product')->references('id')->on('produtos');
 
-            $table->integer('qtdd');
+            $table->unsignedInteger('qtdd');
         });
     }
 
