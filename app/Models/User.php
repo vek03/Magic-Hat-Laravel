@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password',
         'address',
         'number',
+        'extra',
         'cep',
         'city',
         'district',

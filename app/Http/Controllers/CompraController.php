@@ -29,7 +29,7 @@ class CompraController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.finalizar');
     }
 
 

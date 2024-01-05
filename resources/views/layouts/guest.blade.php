@@ -11,6 +11,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -27,4 +29,10 @@
             </div>
         </div>
     </body>
+
+    <!-- JQuery Files -->
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="js/guest.js"></script>
 </html>

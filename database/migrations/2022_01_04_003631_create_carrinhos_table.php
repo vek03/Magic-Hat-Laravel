@@ -19,6 +19,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')->references('id')->on('produtos');
+
+            $table->unsignedInteger('qtdd');
         });
     }
 

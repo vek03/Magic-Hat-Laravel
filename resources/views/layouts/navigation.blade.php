@@ -30,6 +30,16 @@
 
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+
+                                <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Sair') }}
+                                </x-dropdown-link>
+                            </form>
 
                 <?php
                     }

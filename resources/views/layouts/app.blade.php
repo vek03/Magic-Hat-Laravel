@@ -30,9 +30,9 @@
         <!-- Template Main CSS File -->
         <link href="css/style.css" rel="stylesheet">
 
-        <!-- Scripts 
+        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        -->
+        
     </head>
     <body>
         <div vw class="enabled">
@@ -45,7 +45,7 @@
         <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
         <div>
-            @include('layouts.navigation')
+            @include('layouts.navigation-new')
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -66,7 +66,7 @@
     </body>
 
     <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Vendor JS Files -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

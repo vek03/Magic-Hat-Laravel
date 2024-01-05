@@ -19,12 +19,13 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('lastname');
-            $table->boolean('isAdmin');
+            $table->boolean('isAdmin')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address')->nullable();
             $table->unsignedInteger('number')->nullable();
+            $table->string('extra')->nullable();
             $table->string('cep')->nullable();
             $table->string('city')->nullable();
             $table->string('district')->nullable();

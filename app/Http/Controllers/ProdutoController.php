@@ -67,13 +67,28 @@ class ProdutoController extends Controller
     }
 
 
+    /**
+     * Display the all resources.
+     */
+    public function listAdmin()
+    {
+        $produtos = $this->produto->all();
+
+        return view('admin.catalogo', [
+            'produtos' => $produtos,
+        ]);
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Produto $produto)
     {
-        //
+        return view('admin.editar_produto', [
+            'produto' => $produto,
+        ]);
     }
 
 

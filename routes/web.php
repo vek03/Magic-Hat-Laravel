@@ -17,39 +17,28 @@ use App\Http\Controllers\CarrinhoController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
-Route::get('/as', function () {
-    return view('login');
-})->name('as');
-
-
-Route::get('/fale-conosco', function () {
-    return view('fale-conosco');
-})->name('fale-conosco');
+Route::middleware('auth-client')->group(function () 
+{
+    //View Index
+    Route::get('/', function () {
+        return view('index');
+    })->name('home');
 
 
-Route::get('/catalogo', [ProdutoController::class, 'list'])->name('catalogo');
+    //View Fale Conosco
+    Route::get('/fale-conosco', function () {
+        return view('fale-conosco');
+    })->name('fale-conosco');
 
 
-Route::get('/search/{pesquisa}', function () {
-    return view('search');
-})->name('search');
+    //View Catálogo
+    Route::get('/catalogo', [ProdutoController::class, 'list'])->name('catalogo');
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //View Pesquisa
+    Route::get('/search/{pesquisa}', function () {
+        return view('search');
+    })->name('search');
 });
 
 
@@ -65,22 +54,26 @@ Route::fallback(function () {
 Route::middleware(['auth', 'auth-admin'])->group(function () 
 {
     //Dashboard
-    Route::get('/admin-dashboard', [ProdutoController::class, 'indexAcatadas'])->name('atendente.acatadas');
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
     
 
     //View Cadastro Produto
-    Route::get('/cadastro-produto', [ProdutoController::class, 'create'])->name('admin.create-prod');
+    Route::get('/cadastro-produto', function () {
+        return view('admin.cadastro_produto');
+    })->name('admin.create-prod');
 
     //View Cadastro Produto
     Route::post('/cadastro-produto', [ProdutoController::class, 'store'])->name('admin.store-prod');
 
 
     //View Catalogo
-    Route::get('/catalogo-admin', [ProdutoController::class, 'catalogoAdmin'])->name('admin.catalogo');
+    Route::get('/catalogo-admin', [ProdutoController::class, 'listAdmin'])->name('admin.catalogo');
 
 
     //View Editar Produto
-    Route::get('/editar-produto/{produto}', [ProdutoController::class, 'edit'])->name('admin.edit-prod');
+    Route::get('/editar-prod={produto}', [ProdutoController::class, 'edit'])->name('admin.edit-prod');
     
     //Editar Produto
     Route::patch('/editar-produto/{produto}', [ProdutoController::class, 'update'])->name('admin.update-prod');
@@ -92,14 +85,18 @@ Route::middleware(['auth', 'auth-admin'])->group(function ()
 Route::middleware(['auth', 'auth-client'])->group(function () 
 {
     //View Carrinho
-    Route::get('/atendente-denuncias-acatadas', [CarrinhoController::class, 'list'])->name('client.list-carrinho');
+    Route::get('/carrinho', [CarrinhoController::class, 'list'])->name('client.list-cart');
 
 
     //View Editar Perfil
-    Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('admin.edit-prod');
-    
+    Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('client.edit');
+
     //Editar Dados
-    Route::patch('/editar-perfil', [ProfileController::class, 'update'])->name('admin.update-prod');
+    Route::patch('/editar-perfil', [ProfileController::class, 'update'])->name('client.update');
+
+
+    //Deletar Perfil
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
     //View Finalizar Compra

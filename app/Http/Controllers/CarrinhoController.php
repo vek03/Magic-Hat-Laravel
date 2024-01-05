@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
 use Illuminate\Http\Request;
+use Auth;
 
 class CarrinhoController extends Controller
 {
@@ -50,6 +51,20 @@ class CarrinhoController extends Controller
     public function show(Carrinho $carrinho)
     {
         //
+    }
+
+
+    /**
+     * Display all resources.
+     */
+    public function list()
+    {
+        Auth::user()->id;
+        $cart = $this->carrinho->where('id_client', Auth::user()->id)->get();
+
+        return view('client.carrinho', [
+            'cart' => $cart,
+        ]);
     }
 
 

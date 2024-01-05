@@ -28,16 +28,16 @@ class UserSeeder extends Seeder
         //CLIENTE
         DB::table('users')->insert([
             'id_category' => 1,
-            'isAdmin' => false,
             'name' => 'Victor',
             'lastname' => 'Roma',
             'email' => 'fox@gmail.com',
             'password' => Hash::make('12345678'),
-            'address' => 'Rua Fagundes',
+            'address' => 'Rua Dom Marcos Barbosa',
             'number' => 69,
+            'extra' => 'Apto 21A',
             'cep' => '08485-200',
             'city' => 'São Paulo',
-            'district' => 'São Paulo',
+            'district' => 'Conjunto Habitacional Santa Etelvina II',
             'state' => 'SP',
         ]);
     }
