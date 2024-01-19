@@ -7,6 +7,24 @@
 import axios from 'axios';
 window.axios = axios;
 
+import jQuery from 'jquery';
+window.$ = window.jQuery = jQuery;
+
+import AOS from 'aos';
+window.AOS = AOS;
+AOS.init();
+
+import GLightbox from 'glightbox';
+window.GLightbox = GLightbox;
+
+import Swiper from 'swiper';
+window.Swiper = Swiper;
+
+import Isotope from 'isotope-layout';
+window.Isotope = Isotope;
+
+//window.Popper = require('@popperjs/core');
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

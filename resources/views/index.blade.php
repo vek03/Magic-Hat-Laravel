@@ -69,7 +69,7 @@
   <section id="categorias" class="services" style="background-color: #FAF2F7;">
     <div class="container">
 
-      <div class="section-title">
+      <div class="section-title" data-aos="zoom-out">
         <p>Categorias</p>
         <h2>Escolha sua categoria favorita</h2>
       </div>

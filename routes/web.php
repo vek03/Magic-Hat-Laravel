@@ -42,6 +42,15 @@ Route::middleware('auth-client')->group(function ()
 });
 
 
+Route::middleware('auth')->group(function () 
+{
+    //View Editar Perfil
+    Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('edit-profile');
+
+    //Editar Dados
+    Route::patch('/editar-perfil', [ProfileController::class, 'update'])->name('update-profile');
+});
+
 
 //FALLBACK
 Route::fallback(function () {
@@ -86,13 +95,6 @@ Route::middleware(['auth', 'auth-client'])->group(function ()
 {
     //View Carrinho
     Route::get('/carrinho', [CarrinhoController::class, 'list'])->name('client.list-cart');
-
-
-    //View Editar Perfil
-    Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('client.edit');
-
-    //Editar Dados
-    Route::patch('/editar-perfil', [ProfileController::class, 'update'])->name('client.update');
 
 
     //Deletar Perfil
